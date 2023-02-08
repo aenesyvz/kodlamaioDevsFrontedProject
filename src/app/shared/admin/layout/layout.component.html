@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Drop Down Sidebar Menu | CodingLab </title>
+    <!-- Boxiocns CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+<body>
+    <section class="sidebar">
+        <div class="sidebar-header">
+            <!-- <img src="" alt=""> -->
+            <div class="heading">AEY 37</div>
+            <div class="underline"></div>
+        </div>
+        <ul class="menu">
+            <li class="menu-item">
+                <a href="" class="menu-link">Dashboard</a>
+                <div class="underline"></div>
+            </li>
+            <li class="menu-item">
+                <a href="" class="menu-link">Programming Language</a>
+                <div class="underline"></div>
+            </li>
+            <li class="menu-item">
+                <a href="" class="menu-link">Social Media</a>
+                <div class="underline"></div>
+            </li>
+            <li class="menu-item">
+                <a href="" class="menu-link">Users & Operation Claim</a>
+                <div class="underline"></div>
+            </li>
+            <li class="menu-item">
+                <a href="" class="menu-link">Job Advertisement</a>
+                <div class="underline"></div>
+            </li>
+            <li class="menu-item">
+                <a href="" class="menu-link">Settings</a>
+                <div class="underline"></div>
+            </li>
+        </ul>
+
+        <div class="user-info">
+            <div class="underline"></div>
+            <div class="firstName">
+                Alper Enes
+            </div>
+            <div class="lastName">
+                Yavuz
+            </div>
+        </div>
+    </section>
+
+
+    <section class="home-section">
+        <div class="home-content">
+           <router-outlet></router-outlet>
+        </div>
+    </section>
+
+   
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Drop Down Sidebar Menu | CodingLab </title>
+    <link rel="stylesheet" href="./layout.component.css">
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+ 
+  <section class="sidebar">
+    <div class="sidebar-header">
+        <div class="heading">AEY 37</div>
+        <div class="underline"></div>
+    </div>
+        <ul class="menu">
+            <li class="menu-item">
+                <a href="" class="menu-link">Dashboard</a>
+                <div class="underline"></div>
+            </li>
+            <li class="menu-item">
+                <a href="" class="menu-link">Programming Language</a>
+                <div class="underline"></div>
+            </li>
+            <li class="menu-item">
+                <a href="" class="menu-link">social Media</a>
+                <div class="underline"></div>
+            </li>
+            <li class="menu-item">
+                <a href="" class="menu-link">Users & Operation Claim</a>
+                <div class="underline"></div>
+            </li>
+            <li class="menu-item">
+                <a href="" class="menu-link">Job Advertisement</a>
+                <div class="underline"></div>
+            </li>
+            <li class="menu-item">
+                <a href="" class="menu-link">Settings</a>
+                <div class="underline"></div>
+            </li>
+        </ul>
+
+        <div class="user-info">
+            <div class="underline"></div>
+            <div class="firstName">
+                Alper Enes
+            </div>
+            <div class="lastName">
+                Yavuz
+            </div>
+        </div>
+  </section>
+  <section class="home-section">
+    <div class="home-content">
+      <router-outlet></router-outlet>
+    </div>
+  </section>
+
+
+</body>
+</html> -->
+
+
+<!-- 
+   <div class="sidebar close">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus'></i>
+      <span class="logo_name">CodingLab</span>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a href="Admin/ProgrammingLanguage">
+          <i class='bx bx-grid-alt' ></i>
+          <span class="link_name">Programlama Dili</span>
+        </a>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="Admin/ProgrammingTechnology">
+            <i class='bx bx-collection' ></i>
+            <span class="link_name">Programlama Teknolojisi</span>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="Admin/SocialPlatforms">
+            <i class='bx bx-book-alt' ></i>
+            <span class="link_name">Sosyal Medya Platformu</span>
+          </a>
+        </div>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-pie-chart-alt-2' ></i>
+          <span class="link_name">Kullanılar ve Yetkiler</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="Admin/OperationClaim">Yetkiler</a></li>
+          <li><a class="link_name" href="Admin/UserProfiles">Kullanıcılar</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-line-chart' ></i>
+          <span class="link_name">Chart</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Chart</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-plug' ></i>
+            <span class="link_name">Plugins</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Plugins</a></li>
+          <li><a href="#">UI Face</a></li>
+          <li><a href="#">Pigments</a></li>
+          <li><a href="#">Box Icons</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-compass' ></i>
+          <span class="link_name">Explore</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Explore</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-history'></i>
+          <span class="link_name">History</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">History</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-cog' ></i>
+          <span class="link_name">Setting</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Setting</a></li>
+        </ul>
+      </li>
+      <li>
+    <div class="profile-details">
+      <div class="profile-content">
+        <img src="image/profile.jpg" alt="profileImg">
+      </div>
+      <div class="name-job">
+        <div class="profile_name">{{userProfile ? userProfile.firstName : ""}}</div>
+        <div class="job">{{userProfile ? userProfile.lastName : ""}}</div>
+      </div>
+      <i class='bx bx-log-out' ></i>
+    </div>
+  </li>
+</ul>
+  </div>
+ -->

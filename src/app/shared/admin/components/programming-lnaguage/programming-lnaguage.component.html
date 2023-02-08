@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+  <div class="container">
+    <div class="header">
+        <div class="line-list">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div class="title">Yetkiler</div>
+    </div>
+    <div class="mb-3">
+        <label for="filterText" class="form-label">Yetki Ara</label>
+        <input type="text" [(ngModel)]="filterText" id="filterText" class="form-control input"
+            style="border: 2px solid green;" placeholder="Search">
+    </div>
+  
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of programmingLanguages | programmingLanguagePipe:filterText">
+                <th scope="row">{{item.id}}</th>
+                <td>{{item.name}}</td>
+                <td>
+                    <button type="button" class="btn btn-update" (click)="clickUpdateBtn(item.id)">Güncelle</button>
+                    <button type="button" class="btn btn-delete" (click)="clickDeleteBtn(item)">Sil</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-add" #btnadd (click)="clickAddBtn()">Ekle</button>
+  </div>
+  
+  <!-- <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#addModal">
+    <i class="material-icons opacity-10"></i>
+    Operation Talebi Ekle
+  </button>
+  <router-outlet></router-outlet> -->
+  
+  
+  <div class="form-container" #formcontainer>
+    <div #addModal class="modal addModal">
+        <div class="modal-header">
+            <h1>Add New Operation</h1>
+            <div class="add-x-button x-button" (click)="clickAddXButton()">
+                <div class="line line-1"></div>
+                <div class="line line-2"></div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="addForm" class="form">
+                <div class="input-group">
+                  <label for="name">Name</label>
+                  <input type="text" formControlName="name" [(ngModel)]="name" class="form-control" placeholder="Name">
+                </div>
+            </form>
+            <div class="button-group">
+                <button (click)="add()" class="modal-add-action-button">Add</button>
+                <button class="add-close-button modal-close-button" (click)="clickAddCloseBtn()" >Close</button>
+            </div>
+        </div>
+    </div>
+  
+  
+    <div #updateModal class="modal updateModal">
+      <div class="modal-header">
+          <h1>Update Operation Claim</h1>
+          <div class="update-x-button x-button" (click)="clickUpdateXBtn()">
+              <div class="line line-1"></div>
+              <div class="line line-2"></div>
+          </div>
+      </div>
+      <div class="modal-body">
+          <form [formGroup]="updateForm" class="form">
+              <div class="input-group">
+                <label for="name">Name</label>
+                <input type="text" formControlName="name" [(ngModel)]="name" class="form-control" placeholder="Name">
+              </div>
+          </form>
+          <div class="button-group">
+              <button (click)="update()" class="modal-update-action-button">Update</button>
+              <button class="update-close-button modal-close-button" (click)="clickUpdateCloseBtn()" >Close</button>
+          </div>
+      </div>
+    </div>
+
+    <div #deleteModal class="modal deleteModal">
+      <div class="modal-header">
+        <h1>Delete Operation Claim</h1>
+        <div class="delete-x-button x-button" (click)="clickDeleteXBtn()">
+          <div class="line line-1"></div>
+          <div class="line line-2"></div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <h1>Name : <p>{{programmingLanguage.name}}</p></h1>
+        <p>Do you really want to delete this data?</p>
+        <div class="button-group">
+          <button (click)="delete(programmingLanguage.id)" class="modal-delete-action-button">Delete</button>
+          <button class="delete-close-button modal-close-button" (click)="clickDeleteCloseBtn()" >Close</button>
+      </div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<div class="container">
+  <div class="header">
+      <div class="line-list">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+      </div>
+      <div class="title">Programming Language</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="filterText" class="form-label">Programlama Dili Ara</label>
+    <input type="text" [(ngModel)]="filterText" id="filterText" class="form-control" style="border: 2px solid green;" placeholder="Search">
+  </div>
+      <table class="content-table">
+          <thead>
+              <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Technologies</th>
+                  <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of programmingLanguages | programmingLanguagePipe:filterText">
+                  <th scope="row">{{item.id}}</th>
+                  <td>{{item.name}}</td>
+                  <td><button routerLink="/Admin/ProgrammingTechnology/ProgrammingLanguage/{{item.id}}" type="button" class="btn btn-technology">Gözat</button></td>
+                  <td>
+                      <button type="button" class="btn btn-update" data-bs-toggle="modal" data-bs-target="#updateModal">Güncelle</button>
+                      <button type="button" class="btn btn-delete" (click)="delete(item.id)">Sil</button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+</div>
+
+<button type="button" class="btn btn btn-add" data-bs-toggle="modal"
+data-bs-target="#addModal">
+<i class="material-icons opacity-10"></i>
+Programalama Dili Ekle
+</button>
+
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #009879;text-align: center;">
+        <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Programlama Dili Ekleme Formu</h5>
+        <button type="button" class="btn-close text-dark" style="color: white;" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addForm">
+          <div [class]="changeInputClass(name)">
+            <label class="form-label">Programlama Dili Adı</label>
+            <input type="text" formControlName="name" [(ngModel)]="name" class="form-control">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn bg-gradient-primary" (click)="add()">Programlama Dili Ekle</button>
+        <button type="button" class="btn bg-gradient-secondary" id="closeModal" data-bs-dismiss="modal">Kapat</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Programlama Dili Güncelleme Formu</h5>
+        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="updateForm">
+          <div class="input-group input-group-dynamic mb-4">
+            <input type="text" class="form-control" formControlName="name" placeholder="Programalama Dili Adı">
+            <span class="input-group-text" id="basic-addon2">Programlama Dili Adı</span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn bg-gradient-primary" (click)="update()">Programlama Dili Güncelle</button>
+        <button type="button" class="btn bg-gradient-secondary" id="closeUpdateModal" data-bs-dismiss="modal">Kapat</button>
+      </div>
+    </div>
+  </div>
+</div> -->

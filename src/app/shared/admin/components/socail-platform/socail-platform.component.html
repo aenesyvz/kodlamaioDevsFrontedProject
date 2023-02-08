@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+  <div class="container">
+    <div class="header">
+        <div class="line-list">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div class="title">Sosyal Medya Platformları</div>
+    </div>
+  
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Domain Address</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of socialPlatforms">
+                <th scope="row">{{item.id}}</th>
+                <td>{{item.name}}</td>
+                <td>{{item.domainAddress}}</td>
+                <td>
+                    <button type="button" class="btn btn-update" (click)="clickUpdateBtn(item.id)">Güncelle</button>
+                    <button type="button" class="btn btn-delete" (click)="clickDeleteBtn(item)">Sil</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-add" #btnadd (click)="clickAddBtn()">Ekle</button>
+  </div>
+  
+  <!-- <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#addModal">
+    <i class="material-icons opacity-10"></i>
+    Operation Talebi Ekle
+  </button>
+  <router-outlet></router-outlet> -->
+  
+  
+  <div class="form-container" #formcontainer>
+    <div #addModal class="modal addModal">
+        <div class="modal-header">
+            <h1>Add New Operation</h1>
+            <div class="add-x-button x-button" (click)="clickAddXButton()">
+                <div class="line line-1"></div>
+                <div class="line line-2"></div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="addForm" class="form">
+                <div class="input-group">
+                  <label for="name">Name</label>
+                  <input type="text" formControlName="name" [(ngModel)]="name" class="form-control" placeholder="Name">
+                </div>
+                <div class="input-group">
+                  <label for="domainAddress">Domain Address</label>
+                  <input type="text" formControlName="domainAddress" [(ngModel)]="domainAddress" class="form-control" placeholder="Domain Address">
+                </div>
+            </form>
+            <div class="button-group">
+                <button (click)="add()" class="modal-add-action-button">Add</button>
+                <button class="add-close-button modal-close-button" (click)="clickAddCloseBtn()" >Close</button>
+            </div>
+        </div>
+    </div>
+  
+  
+    <div #updateModal class="modal updateModal">
+      <div class="modal-header">
+          <h1>Update Social Media Platform</h1>
+          <div class="update-x-button x-button" (click)="clickUpdateXBtn()">
+              <div class="line line-1"></div>
+              <div class="line line-2"></div>
+          </div>
+      </div>
+      <div class="modal-body">
+          <form [formGroup]="updateForm" class="form">
+              <div class="input-group">
+                <label for="name">Name</label>
+                <input type="text" formControlName="name" [(ngModel)]="name" class="form-control" placeholder="Name">
+              </div>
+              <div class="input-group">
+                <label for="domainAddress">Domain Address</label>
+                <input type="text" formControlName="domainAddress" [(ngModel)]="domainAddress" class="form-control" placeholder="Domain Address">
+              </div>
+          </form>
+          <div class="button-group">
+              <button (click)="update()" class="modal-update-action-button">Update</button>
+              <button class="update-close-button modal-close-button" (click)="clickUpdateCloseBtn()" >Close</button>
+          </div>
+      </div>
+    </div>
+
+    <div #deleteModal class="modal deleteModal">
+      <div class="modal-header">
+        <h1>Delete Socil Media Platform</h1>
+        <div class="delete-x-button x-button" (click)="clickDeleteXBtn()">
+          <div class="line line-1"></div>
+          <div class="line line-2"></div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <h1>Name : <p>{{socialPlatform.name}}</p></h1>
+        <h1>Domain Address : <p>{{socialPlatform.domainAddress}}</p></h1>
+        <p>Do you really want to delete this data?</p>
+        <div class="button-group">
+          <button (click)="delete(socialPlatform.id)" class="modal-delete-action-button">Delete</button>
+          <button class="delete-close-button modal-close-button" (click)="clickDeleteCloseBtn()" >Close</button>
+      </div>
+      </div>
+    </div>
+  </div>
+  

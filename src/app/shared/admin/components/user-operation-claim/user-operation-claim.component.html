@@ -1,0 +1,91 @@
+<h1>Kullanıcı Yetkileri</h1>
+<br/>
+<br/>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Kullanıcı Id</th>
+        <th scope="col">Yetki Id</th>
+        <th scope="col">Güncelle</th>
+        <th scope="col">Sil</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of userOperationClaims">
+        <th scope="row">{{item.id}}</th>
+        <td>{{item.userId}}</td>
+        <td>{{item.operationClaimId}}</td>
+        <td><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal">Güncelle</button></td>
+        <td><button type="button" class="btn btn-danger" (click)="delete(item.id)">Sil</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+<br/>
+<br/>
+
+
+
+<button type="button" class="btn btn-warning mx-3" data-bs-toggle="modal"
+data-bs-target="#addModal">
+<i class="material-icons opacity-10"></i>
+Kullanıcı Yetkisi Ekle
+</button>
+
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Kullanıcı Yetkisi Ekleme Formu</h5>
+        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addForm">
+            <select class="form-select" aria-label="Default select example" formControlName="programmingLanguageId" [(ngModel)]="operationClaimId">
+                <option *ngFor="let item of operationClaims" value="{{item.id}}">{{item.name}}</option>
+            </select>
+           <div>
+            <label class="form-label">Kullanıcı Id</label>
+            <input type="text" formControlName="name" [(ngModel)]="userId" class="form-control">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn bg-gradient-primary" (click)="add()">Kullanıcı Yetkisi Ekle</button>
+        <button type="button" class="btn bg-gradient-secondary" id="closeModal" data-bs-dismiss="modal">Kapat</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Kullanıcı Yetkisi Güncelleme Formu</h5>
+        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="updateForm">
+            <select class="form-select" aria-label="Default select example" formControlName="programmingLanguageId" [(ngModel)]="operationClaimId">
+                <option *ngFor="let item of operationClaims" value="{{item.id}}">{{item.name}}</option>
+            </select>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn bg-gradient-primary" (click)="update()">Kullanıcı Yetkisi Güncelle</button>
+        <button type="button" class="btn bg-gradient-secondary" id="closeUpdateModal" data-bs-dismiss="modal">Kapat</button>
+      </div>
+    </div>
+  </div>
+</div>
+

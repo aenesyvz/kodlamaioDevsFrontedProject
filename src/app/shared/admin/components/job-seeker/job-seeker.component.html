@@ -1,0 +1,30 @@
+<h1>İş Arayanalar</h1>
+<br/>
+<br/>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Adı</th>
+        <th scope="col">Soyadı</th>
+        <th scope="col">Durum</th>
+        <th scope="col">Durum Güncelle</th>
+        <th scope="col">Sil</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of userProfiles">
+        <th scope="row">{{item.id}}</th>
+        <td>{{item.firstName}}</td>
+        <td>{{item.lastName}}</td>
+        <td>{{item.status == true ? "aktif" : "pasif"}}</td>
+        <td><button type="button" class="btn btn-warning" (click)="changeStatus(item.id)">Güncelle</button></td>
+        <td><button type="button" class="btn btn-danger" (click)="delete(item.id)">Sil</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+<br/>
+<br/>
+
